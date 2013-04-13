@@ -1,5 +1,4 @@
+vagrant
 .vagrant
 .idea
-project
-projects
-vagrant_webroot
+webroot
