@@ -2,7 +2,7 @@
   ServerName app.local
   DocumentRoot /vagrant/webroot
   <Directory /vagrant/webroot>
-    DirectoryIndex index.php
+    DirectoryIndex index.php index.html
     AllowOverride All
     Order allow,deny
     Allow from all
