@@ -11,7 +11,7 @@ class mysql {
     require => Package["mysql-server"],
   }
 
-  exec { "set-mysql-passwrod":
+  exec { "set-mysql-password":
     unless => "mysqladmin -uroot -p$mysqlpw status",
     command => "mysqladmin -uroot password $mysqlpw",
     require => Service["mysql"],
