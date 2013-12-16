@@ -3,8 +3,8 @@ Exec {
   path => ["/usr/bin", "/bin", "/usr/sbin", "/sbin", "/usr/local/bin", "/usr/local/sbin"]
 }
 
-include bootstrap 
-include other
+include bootstrap
+include tools
 include apache
 include php
 include php::pear

@@ -1,4 +1,6 @@
 class apache {
+
+  # install apache
   package { "apache2":
     ensure => present,
     require => Exec["apt-get update"]
@@ -11,6 +13,7 @@ class apache {
     require => Package["apache2"]
   }
 
+  # create directory
   file {"/etc/apache2/sites-enabled":
     ensure => directory,
     recurse => true,
@@ -20,12 +23,14 @@ class apache {
     require => Package["apache2"],
   }
 
+  # create apache config from main vagrant manifests
   file { "/etc/apache2/sites-available/vagrant_webroot":
     ensure => present,
     source => "/vagrant/manifests/vagrant_webroot",
     require => Package["apache2"],
   }
 
+  # symlink apache site to the site-enabled directory
   file { "/etc/apache2/sites-enabled/vagrant_webroot":
     ensure => link,
     target => "/etc/apache2/sites-available/vagrant_webroot",
