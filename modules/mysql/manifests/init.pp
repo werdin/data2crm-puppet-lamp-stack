@@ -1,7 +1,7 @@
 class mysql {
 
   # root mysql password
-  $mysqlpw = "d3v0p5"
+  $mysqlpw = "''"
 
   # install mysql server
   package { "mysql-server":

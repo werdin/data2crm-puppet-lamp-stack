@@ -4,7 +4,8 @@ class tools {
   $packages = [
     "curl",
     "vim",
-    "htop"
+    "htop",
+    "mc"
   ]
 
   # install packages
