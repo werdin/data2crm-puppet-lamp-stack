@@ -19,22 +19,55 @@ class apache {
     recurse => true,
     purge => true,
     force => true,
-    before => File["/etc/apache2/sites-enabled/vagrant_webroot.conf"],
+    before => File["/etc/apache2/sites-enabled/crm2crm_vh.conf"],
     require => Package["apache2"],
   }
 
+  #crm2crm viryual hosts
   # create apache config from main vagrant manifests
-  file { "/etc/apache2/sites-available/vagrant_webroot.conf":
+  file { "/etc/apache2/sites-available/crm2crm_vh.conf":
     ensure => present,
-    source => "/vagrant/manifests/vagrant_webroot.conf",
+    source => "/vagrant/manifests/crm2crm_vh.conf",
     require => Package["apache2"],
   }
 
   # symlink apache site to the site-enabled directory
-  file { "/etc/apache2/sites-enabled/vagrant_webroot.conf":
+  file { "/etc/apache2/sites-enabled/crm2crm_vh.conf":
     ensure => link,
-    target => "/etc/apache2/sites-available/vagrant_webroot.conf",
-    require => File["/etc/apache2/sites-available/vagrant_webroot.conf"],
+    target => "/etc/apache2/sites-available/crm2crm_vh.conf",
+    require => File["/etc/apache2/sites-available/crm2crm_vh.conf"],
+    notify => Service["apache2"],
+  }
+
+#api2crm viryual hosts
+# create apache config from main vagrant manifests
+  file { "/etc/apache2/sites-available/api2crm_vh.conf":
+    ensure => present,
+    source => "/vagrant/manifests/api2crm_vh.conf",
+    require => Package["apache2"],
+  }
+
+# symlink apache site to the site-enabled directory
+  file { "/etc/apache2/sites-enabled/api2crm_vh.conf":
+    ensure => link,
+    target => "/etc/apache2/sites-available/api2crm_vh.conf",
+    require => File["/etc/apache2/sites-available/api2crm_vh.conf"],
+    notify => Service["apache2"],
+  }
+
+#xhprof viryual hosts
+# create apache config from main vagrant manifests
+  file { "/etc/apache2/sites-available/xhprof_vh.conf":
+    ensure => present,
+    source => "/vagrant/manifests/xhprof_vh.conf",
+    require => Package["apache2"],
+  }
+
+# symlink apache site to the site-enabled directory
+  file { "/etc/apache2/sites-enabled/xhprof_vh.conf":
+    ensure => link,
+    target => "/etc/apache2/sites-available/xhprof_vh.conf",
+    require => File["/etc/apache2/sites-available/xhprof_vh.conf"],
     notify => Service["apache2"],
   }
 
@@ -44,7 +77,7 @@ class apache {
     require => Package["apache2"],
     subscribe => [
       File["/etc/apache2/mods-enabled/rewrite.load"],
-      File["/etc/apache2/sites-available/vagrant_webroot.conf"]
+      File["/etc/apache2/sites-available/crm2crm_vh.conf"]
     ],
   }
 }
