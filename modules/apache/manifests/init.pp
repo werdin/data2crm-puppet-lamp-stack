@@ -71,6 +71,38 @@ class apache {
     notify => Service["apache2"],
   }
 
+#crmpreview viryual hosts
+# create apache config from main vagrant manifests
+  file { "/etc/apache2/sites-available/api-preview_vh.conf":
+    ensure => present,
+    source => "/vagrant/manifests/api-preview_vh.conf",
+    require => Package["apache2"],
+  }
+
+# symlink apache site to the site-enabled directory
+  file { "/etc/apache2/sites-enabled/api-preview_vh.conf":
+    ensure => link,
+    target => "/etc/apache2/sites-available/api-preview_vh.conf",
+    require => File["/etc/apache2/sites-available/api-preview_vh.conf"],
+    notify => Service["apache2"],
+  }
+
+#crmpreview viryual hosts
+# create apache config from main vagrant manifests
+  file { "/etc/apache2/sites-available/preview_vh.conf":
+    ensure => present,
+    source => "/vagrant/manifests/preview_vh.conf",
+    require => Package["apache2"],
+  }
+
+# symlink apache site to the site-enabled directory
+  file { "/etc/apache2/sites-enabled/preview_vh.conf":
+    ensure => link,
+    target => "/etc/apache2/sites-available/preview_vh.conf",
+    require => File["/etc/apache2/sites-available/preview_vh.conf"],
+    notify => Service["apache2"],
+  }
+
   # starts the apache2 service once the packages installed, and monitors changes to its configuration files and reloads if nesessary
   service { "apache2":
     ensure => running,

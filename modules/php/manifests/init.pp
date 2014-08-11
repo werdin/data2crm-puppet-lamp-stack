@@ -11,7 +11,9 @@ class php {
     "php5-mcrypt",
     "php5-curl",
     "libapache2-mod-php5",
-    "php5-xhprof",	
+    "php5-xhprof",
+    "php5-memcached",
+    "graphviz"
   ]
 
   package { $packages:
