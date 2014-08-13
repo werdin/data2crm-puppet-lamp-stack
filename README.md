@@ -15,7 +15,7 @@ Credit must be given where credit is due. Most of this work was made possible by
 0. Insure Vagrant and Virutal Box are installed.
 1. Install trusty64 Vagrant box. (If not installed already)
 
-        $ vagrant box add trusty64 http://files.vagrantup.com/precise32.box
+        $ vagrant box add trusty64 https://vagrantcloud.com/ubuntu/trusty64/version/1/provider/virtualbox.box
 
 2. Clone this repository.
 3. Create directory "webroot" in the root directory of the clone. This will act as your root web folder.
