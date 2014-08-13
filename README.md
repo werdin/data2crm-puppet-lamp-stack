@@ -13,9 +13,9 @@ Credit must be given where credit is due. Most of this work was made possible by
 
 ## Instructions
 0. Insure Vagrant and Virutal Box are installed.
-1. Install precise32 Vagrant box. (If not installed already)
+1. Install trusty64 Vagrant box. (If not installed already)
 
-        $ vagrant box add precise32 http://files.vagrantup.com/precise32.box
+        $ vagrant box add trusty64 http://files.vagrantup.com/precise32.box
 
 2. Clone this repository.
 3. Create directory "webroot" in the root directory of the clone. This will act as your root web folder.
@@ -40,3 +40,4 @@ You're all set up. The webserver will now be accessible from http://localhost:88
 * curl
 * vim
 * htop
+* memcached
